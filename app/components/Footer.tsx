@@ -48,11 +48,11 @@ export default function Footer() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="relative border-t border-white/[0.06] px-6 py-12"
+      className="relative border-t border-slate-200/60 px-6 py-12"
     >
       <div className="mx-auto flex max-w-3xl flex-col items-center justify-between gap-6 sm:flex-row">
-        <p className="text-sm text-gray-600">
-          © {new Date().getFullYear()} Alex Chen
+        <p className="text-sm text-slate-400">
+          &copy; {new Date().getFullYear()} Alex Chen
         </p>
 
         <div className="flex items-center gap-6">
@@ -62,7 +62,7 @@ export default function Footer() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 transition-colors duration-300 hover:text-gray-300"
+              className="text-slate-400 transition-colors duration-300 hover:text-slate-700"
               aria-label={social.name}
             >
               {social.icon}

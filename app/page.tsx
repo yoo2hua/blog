@@ -9,7 +9,7 @@ export default function Home() {
   const posts = getAllPosts();
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-[#0a0a0a]">
+    <div className="relative flex min-h-screen flex-col bg-[#f8fafc]">
       <GradientBackground />
       <CursorGlow />
       <main className="relative z-10 flex-1">
@@ -17,20 +17,20 @@ export default function Home() {
 
         <section id="blog" className="relative px-6 py-32 sm:py-40">
           <div className="mx-auto max-w-2xl">
-            <h2 className="mb-12 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <h2 className="mb-16 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
               Latest Posts
             </h2>
 
-            <div className="flex flex-col gap-10">
-              {posts.map((post) => (
+            <div className="flex flex-col gap-8">
+              {posts.map((post, index) => (
                 <Link
                   key={post.slug}
                   href={`/posts/${post.slug}`}
                   className="group block"
                 >
-                  <article className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-md transition-all duration-300 hover:border-white/[0.15] hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-purple-500/5 sm:p-10">
-                    <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500">
-                      <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-gray-300">
+                  <article className="rounded-2xl border border-slate-200/60 bg-white/80 p-8 backdrop-blur-sm transition-all duration-300 hover:border-slate-300/80 hover:bg-white hover:shadow-lg hover:shadow-slate-200/50 sm:p-10">
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
+                      <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-500">
                         Article
                       </span>
                       <time>
@@ -42,15 +42,15 @@ export default function Home() {
                       </time>
                     </div>
 
-                    <h3 className="mt-5 text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-gray-200 sm:text-2xl">
+                    <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900 transition-colors group-hover:text-sky-700 sm:text-2xl">
                       {post.title}
                     </h3>
 
-                    <p className="mt-3 text-[15px] leading-relaxed text-gray-400">
+                    <p className="mt-3 text-[15px] leading-relaxed text-slate-500">
                       {post.description}
                     </p>
 
-                    <div className="mt-6 flex items-center gap-2 text-sm font-medium text-gray-300 transition-colors group-hover:text-white">
+                    <div className="mt-6 flex items-center gap-2 text-sm font-medium text-sky-600 transition-colors group-hover:text-sky-700">
                       <span>Read more</span>
                       <svg
                         className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"

@@ -34,7 +34,6 @@ export default function CursorGlow() {
     window.addEventListener("mousemove", handleMouseMove);
     rafRef.current = requestAnimationFrame(animate);
 
-    // Fade in after a short delay
     const timer = setTimeout(() => setVisible(true), 100);
 
     return () => {
@@ -49,9 +48,9 @@ export default function CursorGlow() {
       id="cursor-glow"
       className="pointer-events-none fixed top-0 left-0 z-0 h-[400px] w-[400px] transition-opacity duration-700"
       style={{
-        opacity: visible ? 0.35 : 0,
+        opacity: visible ? 0.2 : 0,
         background:
-          "radial-gradient(circle, rgba(124,58,237,0.3) 0%, rgba(59,130,246,0.12) 40%, transparent 70%)",
+          "radial-gradient(circle, rgba(56,189,248,0.25) 0%, rgba(14,165,233,0.08) 40%, transparent 70%)",
         filter: "blur(80px)",
         willChange: "transform",
       }}

@@ -49,14 +49,14 @@ export default function Hero() {
       >
         <motion.h1
           variants={item}
-          className="max-w-4xl text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
+          className="max-w-4xl text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl md:text-7xl lg:text-8xl"
         >
           Alex Chen
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="max-w-xl text-lg leading-relaxed text-gray-400 sm:text-xl"
+          className="max-w-xl text-lg leading-relaxed text-slate-500 sm:text-xl"
         >
           Frontend engineer crafting thoughtful interfaces.
           Writing about React, design systems, and the web.
@@ -68,7 +68,7 @@ export default function Hero() {
         >
           <a
             href="#blog"
-            className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500 px-8 text-sm font-medium text-white shadow-lg shadow-purple-500/20 transition-all duration-300 ease-out hover:brightness-110 hover:shadow-purple-500/30 hover:scale-105 active:scale-95"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-slate-900 px-8 text-sm font-medium text-white shadow-lg shadow-slate-900/15 transition-all duration-300 ease-out hover:bg-slate-800 hover:shadow-slate-900/25 hover:scale-105 active:scale-95"
           >
             View Blog
           </a>
@@ -76,7 +76,7 @@ export default function Hero() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-12 items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 text-sm font-medium text-gray-300 backdrop-blur-sm transition-all duration-300 ease-out hover:border-white/20 hover:bg-white/10 hover:text-white hover:scale-105 active:scale-95"
+            className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white/80 px-8 text-sm font-medium text-slate-600 backdrop-blur-sm transition-all duration-300 ease-out hover:border-slate-300 hover:bg-white hover:text-slate-900 hover:scale-105 active:scale-95"
           >
             GitHub
           </a>
@@ -93,10 +93,10 @@ export default function Hero() {
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs tracking-widest text-gray-600 uppercase">
+          <span className="text-xs tracking-widest text-slate-400 uppercase">
             Scroll
           </span>
-          <div className="h-8 w-[1px] bg-gradient-to-b from-gray-600 to-transparent" />
+          <div className="h-8 w-[1px] bg-gradient-to-b from-slate-400 to-transparent" />
         </motion.div>
       </motion.div>
     </section>

@@ -3,12 +3,10 @@
 import { motion } from "framer-motion";
 
 interface BlogPost {
-  id: string;
+  slug: string;
   title: string;
-  excerpt: string;
+  description: string;
   date: string;
-  tag: string;
-  readTime: string;
 }
 
 interface BlogCardProps {
@@ -28,30 +26,34 @@ export default function BlogCard({ post, index }: BlogCardProps) {
         ease: "easeOut",
       }}
     >
-      <a href="#" className="group block">
+      <div className="group">
         <motion.div
-          whileHover={{ y: -4, scale: 1.02 }}
+          whileHover={{ y: -4, scale: 1.01 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-8 backdrop-blur-md transition-shadow duration-300 hover:border-white/[0.15] hover:bg-white/[0.05] hover:shadow-2xl hover:shadow-purple-500/5 sm:p-10"
+          className="rounded-2xl border border-slate-200/60 bg-white/80 p-8 backdrop-blur-sm transition-shadow duration-300 hover:border-slate-300/80 hover:bg-white hover:shadow-lg hover:shadow-slate-200/50 sm:p-10"
         >
-          <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500">
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-gray-300">
-              {post.tag}
+          <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
+            <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-slate-500">
+              Article
             </span>
-            <span>{post.date}</span>
-            <span className="text-gray-700">·</span>
-            <span>{post.readTime}</span>
+            <time>
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </time>
           </div>
 
-          <h3 className="mt-5 text-xl font-semibold tracking-tight text-white transition-colors group-hover:text-gray-200 sm:text-2xl">
+          <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900 transition-colors group-hover:text-sky-700 sm:text-2xl">
             {post.title}
           </h3>
 
-          <p className="mt-3 line-clamp-2 text-[15px] leading-relaxed text-gray-400">
-            {post.excerpt}
+          <p className="mt-3 line-clamp-2 text-[15px] leading-relaxed text-slate-500">
+            {post.description}
           </p>
 
-          <div className="mt-6 flex items-center gap-2 text-sm font-medium text-gray-300 transition-colors group-hover:text-white">
+          <div className="mt-6 flex items-center gap-2 text-sm font-medium text-sky-600 transition-colors group-hover:text-sky-700">
             <span>Read more</span>
             <svg
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -68,7 +70,7 @@ export default function BlogCard({ post, index }: BlogCardProps) {
             </svg>
           </div>
         </motion.div>
-      </a>
+      </div>
     </motion.article>
   );
 }
