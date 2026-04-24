@@ -14,16 +14,28 @@ export type Post = {
   slug: string;
 };
 
+function generateSlug(fileName: string): string {
+  return fileName
+    .replace(/\.md$/, "")
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+}
+
 export function getAllPosts(): Post[] {
   const fileNames = fs.readdirSync(postsDirectory);
 
   const posts = fileNames
     .filter((name) => name.endsWith(".md"))
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const { data, content } = matter(fileContents);
+
+      const slug =
+        data.slug && typeof data.slug === "string"
+          ? data.slug
+          : generateSlug(fileName);
 
       return {
         title: String(data.title ?? ""),
@@ -39,22 +51,32 @@ export function getAllPosts(): Post[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
+  const fileNames = fs.readdirSync(postsDirectory);
 
-  if (!fs.existsSync(fullPath)) {
-    return null;
+  for (const fileName of fileNames) {
+    if (!fileName.endsWith(".md")) continue;
+
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, "utf8");
+    const { data, content } = matter(fileContents);
+
+    const fileSlug =
+      data.slug && typeof data.slug === "string"
+        ? data.slug
+        : generateSlug(fileName);
+
+    if (fileSlug === slug) {
+      return {
+        title: String(data.title ?? ""),
+        date: String(data.date ?? ""),
+        description: String(data.description ?? ""),
+        content,
+        slug: fileSlug,
+      };
+    }
   }
 
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  return {
-    title: String(data.title ?? ""),
-    date: String(data.date ?? ""),
-    description: String(data.description ?? ""),
-    content,
-    slug,
-  };
+  return null;
 }
 
 export async function markdownToHtml(content: string): Promise<string> {
