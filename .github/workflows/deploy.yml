@@ -18,16 +18,13 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.x
 
       - name: Install deps
         run: npm install
 
       - name: Build
         run: npm run build
-
-      - name: Export static
-        run: npm run export
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

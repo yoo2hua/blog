@@ -1,11 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   /* config options here */
-    output: 'export',   // ✅ 关键
+  output: 'export', // ✅ 关键
   images: {
-    unoptimized: true // ✅ 避免图片问题
-  }
-};
+    unoptimized: true, // ✅ 避免图片问题
+  },
+}
 
-export default nextConfig;
+export default nextConfig
